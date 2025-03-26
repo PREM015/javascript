@@ -1,0 +1,17 @@
+Got it! Here’s the rule I'll follow for adding comments to your code:  
+
+### **Comment Rules for Code**
+1. **Comment for Every Line:**  
+   - I will add comments for each line of code, whether it's a variable declaration, condition, loop, or function.  
+   - For functions, I'll include comments for every line inside the function.  
+
+2. **Simple Language:**  
+   - Comments will be written in easy-to-understand language.  
+
+3. **Code-Focused Comments Only:**  
+   - Comments will explain what the code does, not unrelated details.  
+
+4. **Preserve Existing Content:**  
+   - If you ask for a description or explanation about a concept, I'll add that without deleting any existing code or comments.  
+
+This approach will ensure your code is well-documented and clear. 🚀
