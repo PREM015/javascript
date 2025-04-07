@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Set character encoding -->
+    <meta charset="UTF-8" />
+
+    <!-- Ensure layout scales properly on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title of the document -->
     <title>Document</title>
-</head>
-<body>
+  </head>
+
+  <body>
+    <!-- Page heading -->
     <h1>Chai aur Javascript</h1>
-    <button id="start" >Start</button>
+
+    <!-- Button to start showing the current time -->
+    <button id="start">Start</button>
+
+    <!-- Button to stop showing the time -->
     <button id="stop">Stop</button>
-</body>
-<script>
-    const sayDate = function(str){
-        console.log(str, Date.now());
-    }
+  </body>
 
-    const intervalId = setInterval(sayDate, 1000, "hi")
+  <script>
+    // Function to print a string and current timestamp every second
+    const sayDate = function (str) {
+      console.log(str, Date.now());
+    };
 
-    clearInterval(intervalId)
-</script>
+    // Declare variable to store interval ID globally so it can be cleared later
+    let intervalId;
+
+    // Add event listener to "Start" button
+    document.getElementById("start").addEventListener("click", function () {
+      // Start the interval and store its ID
+      intervalId = setInterval(sayDate, 1000, "hi");
+    });
+
+    // Add event listener to "Stop" button
+    document.getElementById("stop").addEventListener("click", function () {
+      // Stop the interval using its ID
+      clearInterval(intervalId);
+      console.log("Interval stopped");
+    });
+  </script>
 </html>

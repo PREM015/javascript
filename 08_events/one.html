@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set character encoding -->
     <meta charset="UTF-8">
+
+    <!-- Ensure layout scales properly on different devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>htnml Events </title>
+
+    <!-- Title shown in browser tab -->
+    <title>htnml Events</title>
 </head>
+
+<!-- Set dark background and light text color -->
 <body style="background-color: #414141; color: aliceblue;">
+
+    <!-- Heading for the page -->
     <h2>Amazing image</h2>
-    <div >
+
+    <!-- Wrapper div containing the list of images and a link -->
+    <div>
         <ul id="images">
+            <!-- Each image is placed inside a list item <li> -->
             <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
             <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
             <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
             <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            
+            <!-- A normal link styled in white -->
             <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
         </ul>
-   </div>
+    </div>
 </body>
+
 <script>
-    // document.getElementById('owl').onclick = function(){
-    //     alert("owl clicked")
-    // }
+    /*
+    // Simple click event using onclick (not recommended for multiple handlers)
+    document.getElementById('owl').onclick = function(){
+        alert("owl clicked")
+    }
 
-     // attachEvent()
-    // jQuery - on
+    // Modern way to attach an event listener
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");
+    }, false)
 
-    // type, timestamp, defaultPrevented
-    // target, toElement, srcElement, currentTarget,
-    // clientX, clientY, screenX, screenY
-    // altkey, ctrlkey, shiftkey, keyCode
+    // Click on owl image only
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("owl clicked");
 
-    // document.getElementById('images').addEventListener('click', function(e){
-    //     console.log("clicked inside the ul");
-    // }, false)
+        // Prevent event from bubbling up to parent
+        e.stopPropagation()
+    }, false)
 
-    // document.getElementById('owl').addEventListener('click', function(e){
-    //     console.log("owl clicked");
-    //     e.stopPropagation()
-    // }, false)
-    
-    // document.getElementById('google').addEventListener('click',function(e){
-    //     e.preventDefault();
-    //     e.stopPropagation()
-    //     console.log("google clicked");
-    // }, false)
-   
-    
+    // Prevent default link behavior and bubbling
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault(); // Stops link from opening
+        e.stopPropagation(); // Stops event from reaching parent
+        console.log("google clicked");
+    }, false)
+    */
+
+    // Add a click event listener to the <ul> with id "images"
     document.querySelector('#images').addEventListener('click', function(e){
+        // Log the tag name of the clicked element
         console.log(e.target.tagName);
+
+        // Check if the clicked element is an image
         if (e.target.tagName === 'IMG') {
+            // Log the ID of the clicked image
             console.log(e.target.id);
-            let removeIt = e.target.parentNode
-            removeIt.remove()
+
+            // Get the parent <li> of the clicked image
+            let removeIt = e.target.parentNode;
+
+            // Remove the <li> from the DOM
+            removeIt.remove();
         }
-    
-        
+
+        // Alternative way to remove the element:
+        // removeIt.parentNode.removeChild(removeIt)
     })
-    
-    //removeIt.parentNode.removeChild(removeIt)
 </script>
 </html>

@@ -6,69 +6,81 @@
     <title>Closure aur chai</title>
   </head>
 
-  <body style="background-color: rgb(48, 48, 48)">
+  <body style="background-color: rgb(48, 48, 48); color: white; font-family: sans-serif">
+    <!-- Heading of the page -->
+    <h1>Closure & Background Color Switch</h1>
+
+    <!-- Three buttons to change background color -->
     <button id="orange">Orange</button>
     <button id="green">Green</button>
-    <button id="reset">reset</button>
-  </body> 
+    <button id="reset">Reset</button>
 
-  <script>
-    // function init() {
-    //     let name = "Mozilla";
-    //     function displayName() {
-    //         console.log(name);
-    //     }
-    //     displayName();
-    // }
-    // init();
+    <hr />
 
-    // function outer(){
-    //     let username = "hitesh"
-    //     console.log("OUTER", secret);
-    //     function inner(){
-    //         let secret = "my123"
-    //         console.log("inner", username);
-    //     }
-    //     function innerTwo(){
-    //         console.log("innerTwo", username);
-    //         console.log(secret);
-    //     }
-    //     inner()
-    //     innerTwo()
+    <script>
+      // ---------------------------------------------
+      // Closure Example 1: Simple closure using init()
+      // ---------------------------------------------
+      function init() {
+        let name = "Mozilla"; // Variable local to init
+        function displayName() {
+          // Inner function that uses outer variable
+          console.log("init ->", name);
+        }
+        displayName(); // Call the inner function
+      }
+      init(); // Execute closure example
 
-    // }
-    // outer()
-    // console.log("TOO OUTER", username);
+      // -------------------------------------------------------
+      // Closure Example 2: Nested functions with shared context
+      // -------------------------------------------------------
+      function outer() {
+        let username = "hitesh"; // Variable in outer scope
 
-    // function makeFunc() {
-    //     const name = "Mozilla";
-    //     function displayName() {
-    //         console.log(name);
-    //     }
-    //     return displayName;
-    // }
+        function inner() {
+          let secret = "my123"; // Inner scoped variable
+          console.log("inner ->", username); // Access outer variable
+        }
 
-    // const myFunc = makeFunc();
-    // myFunc();
-  </script>
-  <script>
-    // document.getElementById("orange").onclick = function(){
-    //     document.body.style.backgroundColor = `orange`
-    // }
-    // document.getElementById("green").onclick = function(){
-    //     document.body.style.backgroundColor = `green`
-    // }
+        function innerTwo() {
+          console.log("innerTwo ->", username); // Can access outer variable
+          // console.log(secret); // ❌ This would throw an error (secret not accessible here)
+        }
 
-    function clickHandler(color) {
-      // document.body.style.backgroundColor = `${color}`
+        inner();     // Call first inner function
+        innerTwo();  // Call second inner function
+      }
+      outer(); // Execute nested closure example
 
-      return function () {
-        document.body.style.backgroundColor = `${color}`;
-      };
-    }
+      // ----------------------------------------------
+      // Closure Example 3: Returning a function (makeFunc)
+      // ----------------------------------------------
+      function makeFunc() {
+        const name = "Mozilla"; // Local variable
+        function displayName() {
+          // Inner function remembers `name` even after outer ends
+          console.log("makeFunc ->", name);
+        }
+        return displayName; // Return the inner function
+      }
 
-    document.getElementById("orange").onclick = clickHandler("orange");
-    document.getElementById("green").onclick = clickHandler("green");
-    document.getElementById("reset").onclick = clickHandler("rgb(48, 48, 48)");
-  </script>
+      const myFunc = makeFunc(); // `makeFunc()` returns `displayName`
+      myFunc(); // Calls returned function with remembered `name`
+
+      // ------------------------------------------------------------------
+      // Closure in DOM Event Handlers: Using closure to remember `color`
+      // ------------------------------------------------------------------
+      function clickHandler(color) {
+        // Returns a function that sets background to given color
+        return function () {
+          document.body.style.backgroundColor = `${color}`;
+        };
+      }
+
+      // Attach the closures to respective button click events
+      document.getElementById("orange").onclick = clickHandler("orange");
+      document.getElementById("green").onclick = clickHandler("green");
+      document.getElementById("reset").onclick = clickHandler("rgb(48, 48, 48)");
+    </script>
+  </body>
 </html>

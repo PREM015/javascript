@@ -1,37 +1,45 @@
+// -----------------------------
+// ✅ Object Literal Example
+// -----------------------------
 const user = {
     username: "hitesh",
     loginCount: 8,
     signedIn: true,
 
     getUserDetails: function(){
-        //console.log("Got user details from database");
-        // console.log(`Username: ${this.username}`);
+        // Logs the current object (`user`)
         console.log(this);
     }
-
 }
 
+// Usage:
+// console.log(user.username);        // Accessing property
+// user.getUserDetails();             // Calling method
 
-
-//console.log(user.username)
-//console.log(user.getUserDetails());
-// console.log(this);
-
-
+// -----------------------------
+// ✅ Constructor Function Example
+// -----------------------------
 function User(username, loginCount, isLoggedIn){
+    // Assign properties to the new object
     this.username = username;
     this.loginCount = loginCount;
-    this.isLoggedIn = isLoggedIn
+    this.isLoggedIn = isLoggedIn;
 
+    // Method attached directly to each instance
     this.greeting = function(){
         console.log(`Welcome ${this.username}`);
-
     }
 
-    return this
+    // `return this` is implicit when using `new`
 }
 
-const userOne = new User("hitesh", 12, true)
-const userTwo = new User("ChaiAurCode", 11, false)
-console.log(userOne.constructor);
-//console.log(userTwo);
+// Creating instances using constructor
+const userOne = new User("hitesh", 12, true);
+const userTwo = new User("ChaiAurCode", 11, false);
+
+// Output the constructor function used to create userOne
+console.log(userOne.constructor);  // [Function: User]
+
+// Optionally test other features
+// userOne.greeting();               // Welcome hitesh
+// console.log(userTwo.username);   // ChaiAurCode

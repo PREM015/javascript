@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Sets the character encoding for the document -->
     <meta charset="UTF-8" />
+    
+    <!-- Ensures compatibility with older versions of Internet Explorer -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Sets the viewport to make the layout responsive on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the webpage displayed in the browser tab -->
     <title>DOM | Chai aur code</title>
   </head>
+
+  <!-- Sets background and text color of the page -->
   <body style="background-color: #212121; color: #fff">
-    <!-- Main container for day elements -->
+    
+    <!-- Main container for all the day elements -->
     <div class="parent">
-      <!-- Individual day entries -->
+      
+      <!-- Each div represents a day of the week -->
       <div class="day">Monday</div>
       <div class="day">Tuesday</div>
       <div class="day">Wednesday</div>
@@ -18,50 +29,60 @@
   </body>
 
   <script>
-    // Selecting the parent element
+    // Select the element with class "parent" and store in variable
     const parent = document.querySelector(".parent");
 
-    // Logs the parent element itself
+    // Log the parent element to the console
     console.log(parent);
 
-    // Logs all child elements inside the parent (HTMLCollection)
+    // Log all child elements (only element nodes) inside the parent as an HTMLCollection
     console.log(parent.children);
 
-    // Logs the content of the second child element (Tuesday) for demonstration purposes
+    // Log the inner text of the second child (Tuesday)
     console.log(parent.children[1].innerHTML);
 
-    // Loop through all child elements and print their content
-    // for (let i = 0; i < parent.children.length; i++) {
-    //     console.log(parent.children[i].innerHTML);
-    // }
+    /*
+    // Loop through all children of parent and log their text content
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML);
+    }
+    */
 
-    // Change the text color of the second child to orange
+    // Select the second child (Tuesday) and store in variable
     const element = parent.children[1];
 
-element.style.backgroundImage = "linear-gradient(to right, red, blue)";
-element.style.webkitBackgroundClip = "text";
-element.style.webkitTextFillColor = "transparent";
+    // Apply a linear gradient background to the text
+    element.style.backgroundImage = "linear-gradient(to right, red, blue)";
 
+    // Clip the background to the text (for gradient effect)
+    element.style.webkitBackgroundClip = "text";
 
-    // Logs the first child element inside the parent (Monday)
-    // console.log(parent.firstElementChild);
+    // Make the text itself transparent so the gradient shows through
+    element.style.webkitTextFillColor = "transparent";
 
-    // Logs the last child element inside the parent (Thursday)
-    // console.log(parent.lastElementChild);
+    /*
+    // Log the first child (Monday)
+    console.log(parent.firstElementChild);
 
-    // Selecting the first `.day` element
+    // Log the last child (Thursday)
+    console.log(parent.lastElementChild);
+    */
+
+    // Select the first element with class "day" (Monday)
     const dayOne = document.querySelector(".day");
 
-    // Logs the first `.day` element
-    // console.log(dayOne);
+    /*
+    // Log the selected element (Monday)
+    console.log(dayOne);
 
-    // Logs the parent element of `.day` (which is `.parent`)
-    // console.log(dayOne.parentElement);
+    // Log the parent of the selected element (should be .parent)
+    console.log(dayOne.parentElement);
 
-    // Logs the next sibling element after the first `.day` (Tuesday)
-    // console.log(dayOne.nextElementSibling);
+    // Log the next sibling element (Tuesday)
+    console.log(dayOne.nextElementSibling);
+    */
 
-    // Logs all child nodes inside `.parent` (includes text nodes like spaces or line breaks)
+    // Log all child nodes including text nodes (spaces, line breaks)
     console.log("NODES: ", parent.childNodes);
   </script>
 </html>

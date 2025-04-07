@@ -1,35 +1,39 @@
-// let myName = "hitesh     "
-// let mychannel = "chai     "
-
-// console.log(myName.trueLength);
-
-
+// Example array
 let myHeros = ["thor", "spiderman"]
 
-
+// Basic object with method
 let heroPower = {
     thor: "hammer",
     spiderman: "sling",
 
-    getSpiderPower: function(){
+    getSpiderPower: function() {
         console.log(`Spidy power is ${this.spiderman}`);
     }
 }
 
-Object.prototype.hitesh = function(){
+// -------------------------------
+// Prototype Extension
+// -------------------------------
+
+// Adds a method to all objects (including arrays, functions, etc.)
+Object.prototype.hitesh = function() {
     console.log(`hitesh is present in all objects`);
 }
 
-Array.prototype.heyHitesh = function(){
+// Adds a method only to arrays
+Array.prototype.heyHitesh = function() {
     console.log(`Hitesh says hello`);
 }
 
-// heroPower.hitesh()
-// myHeros.hitesh()
-// myHeros.heyHitesh()
-// heroPower.heyHitesh()
+// Usage examples:
+// heroPower.hitesh();      // ✅ Works
+// myHeros.hitesh();        // ✅ Works
+// myHeros.heyHitesh();     // ✅ Works
+// heroPower.heyHitesh();   // ❌ Error: not an array
 
-// inheritance
+// -------------------------------
+// Prototype Inheritance
+// -------------------------------
 
 const User = {
     name: "chai",
@@ -40,6 +44,9 @@ const Teacher = {
     makeVideo: true
 }
 
+// Setting up inheritance
+Teacher.__proto__ = User;  // Old way (still valid)
+
 const TeachingSupport = {
     isAvailable: false
 }
@@ -47,21 +54,27 @@ const TeachingSupport = {
 const TASupport = {
     makeAssignment: 'JS assignment',
     fullTime: true,
-    __proto__: TeachingSupport
+    __proto__: TeachingSupport  // Inherit from TeachingSupport
 }
 
-Teacher.__proto__ = User
-
-// modern syntax
+// Modern way: Object.setPrototypeOf
 Object.setPrototypeOf(TeachingSupport, Teacher)
 
-let anotherUsername = "ChaiAurCode     "
+// Now, TASupport --> TeachingSupport --> Teacher --> User
 
-String.prototype.trueLength = function(){
+// -------------------------------
+// Custom String Prototype Method
+// -------------------------------
+
+let anotherUsername = "ChaiAurCode     ";
+
+// Adds a custom method to all strings
+String.prototype.trueLength = function() {
     console.log(`${this}`);
     console.log(`True length is: ${this.trim().length}`);
 }
 
-anotherUsername.trueLength()
-"hitesh".trueLength()
-"iceTea".trueLength()
+// Usage:
+anotherUsername.trueLength(); // Trims and logs real length
+"hitesh".trueLength();
+"iceTea".trueLength();

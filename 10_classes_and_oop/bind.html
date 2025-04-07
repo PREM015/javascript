@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React</title>
-</head>
-<body>
+  </head>
+  <body>
     <button>Button Clicked</button>
-</body>
-<script>
+  </body>
+  <script>
+    // Define a class named React (not the actual React library, just a mock for understanding)
     class React {
-        constructor(){
-            this.library = "React"
-            this.server = "https://localhost:300"
+      constructor() {
+        // Defining properties of the class
+        this.library = "React";
+        this.server = "https://localhost:300";
 
-            //requirement
-            document
-                .querySelector('button')
-                .addEventListener('click', this.handleClick.bind(this))
+        // Adding an event listener to the button
+        document
+          .querySelector("button")
+          // Bind ensures `this` inside handleClick refers to the class instance
+          .addEventListener("click", this.handleClick.bind(this));
+      }
 
-        }
-        handleClick(){
-            console.log("button clicked");
-            console.log(this.server);
-        }
+      // Method that will be triggered when the button is clicked
+      handleClick() {
+        console.log("button clicked"); // logs on click
+        console.log(this.server); // logs server URL from class context
+      }
     }
 
-    const app = new React()
-</script>
+    // Create an instance of the React class
+    const app = new React();
+  </script>
 </html>

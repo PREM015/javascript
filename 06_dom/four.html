@@ -1,48 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set character encoding -->
     <meta charset="UTF-8">
+    
+    <!-- Ensure compatibility with older IE browsers -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Make the layout responsive on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title shown in the browser tab -->
     <title>Chai aur code | DOM</title>
 </head>
+
+<!-- Set dark background and white text -->
 <body style="background-color: #212121; color: #fff;">
+    <!-- Unordered list with class 'language' containing one item -->
     <ul class="language">
         <li>Javascript</li>
     </ul>
 </body>
+
 <script>
+    // Function to add a new language using innerHTML (less optimized)
     function addLanguage(langName){
+        // Create a new <li> element
         const li = document.createElement('li');
+
+        // Set the inner HTML to the language name
         li.innerHTML = `${langName}`
+
+        // Append the new <li> to the <ul> with class "language"
         document.querySelector('.language').appendChild(li)
     }
+
+    // Add two languages using the above method
     addLanguage("python")
     addLanguage("typescript")
 
+    // Optimized function to add a new language using createTextNode
     function addOptiLanguage(langName){
+        // Create a new <li> element
         const li = document.createElement('li');
+
+        // Add a text node with the language name
         li.appendChild(document.createTextNode(langName))
+
+        // Append the new <li> to the <ul>
         document.querySelector('.language').appendChild(li)
     }
+
+    // Add one language using the optimized method
     addOptiLanguage('golang')
 
-    //Edit
+    // ===== Editing Elements =====
+
+    // Select the second <li> in the list
     const secondLang = document.querySelector("li:nth-child(2)")
+
+    // Log it to the console for debugging
     console.log(secondLang);
-    //secondLang.innerHTML = "Mojo"
+
+    // Create a new <li> to replace the second one
     const newli = document.createElement('li')
+
+    // Set its text content to "Mojo"
     newli.textContent = "Mojo"
+
+    // Replace the second <li> with the new one
     secondLang.replaceWith(newli)
 
-    //edit
+    // Select the first <li> in the list
     const firstLang = document.querySelector("li:first-child")
+
+    // Replace the entire element (including outer tag) with a new one using outerHTML
     firstLang.outerHTML = '<li>TypeScript</li>'
 
-    //remove
+    // ===== Removing Elements =====
+
+    // Select the last <li> in the list
     const lastLang = document.querySelector('li:last-child')
+
+    // Remove the selected element from the DOM
     lastLang.remove()
-
-
 </script>
 </html>
