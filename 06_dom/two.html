@@ -36,7 +36,12 @@
     // }
 
     // Change the text color of the second child to orange
-    parent.children[1].style.color = "orange";
+    const element = parent.children[1];
+
+element.style.backgroundImage = "linear-gradient(to right, red, blue)";
+element.style.webkitBackgroundClip = "text";
+element.style.webkitTextFillColor = "transparent";
+
 
     // Logs the first child element inside the parent (Monday)
     // console.log(parent.firstElementChild);
