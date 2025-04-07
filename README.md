@@ -12,12 +12,12 @@
 </p>
 
 ---
-
 ## 🎨 Banner
 
 <p align="center">
   <img src="banner.png" alt="JavaScript Repository Banner" width="100%" style="max-width: 800px; border-radius: 12px;" />
 </p>
+
 
 ---
 
