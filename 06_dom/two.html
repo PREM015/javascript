@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM | Chai aur code</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <!-- Main container for day elements -->
+    <div class="parent">
+      <!-- Individual day entries -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+
+  <script>
+    // Selecting the parent element
+    const parent = document.querySelector(".parent");
+
+    // Logs the parent element itself
+    console.log(parent);
+
+    // Logs all child elements inside the parent (HTMLCollection)
+    console.log(parent.children);
+
+    // Logs the content of the second child element (Tuesday) for demonstration purposes
+    console.log(parent.children[1].innerHTML);
+
+    // Loop through all child elements and print their content
+    // for (let i = 0; i < parent.children.length; i++) {
+    //     console.log(parent.children[i].innerHTML);
+    // }
+
+    // Change the text color of the second child to orange
+    parent.children[1].style.color = "orange";
+
+    // Logs the first child element inside the parent (Monday)
+    // console.log(parent.firstElementChild);
+
+    // Logs the last child element inside the parent (Thursday)
+    // console.log(parent.lastElementChild);
+
+    // Selecting the first `.day` element
+    const dayOne = document.querySelector(".day");
+
+    // Logs the first `.day` element
+    // console.log(dayOne);
+
+    // Logs the parent element of `.day` (which is `.parent`)
+    // console.log(dayOne.parentElement);
+
+    // Logs the next sibling element after the first `.day` (Tuesday)
+    // console.log(dayOne.nextElementSibling);
+
+    // Logs all child nodes inside `.parent` (includes text nodes like spaces or line breaks)
+    console.log("NODES: ", parent.childNodes);
+  </script>
+</html>
